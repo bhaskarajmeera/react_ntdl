@@ -40,6 +40,13 @@ taskList.map((item) => {
   }));
 };
 
+const handleOnDelete = (id) => {
+  if (window.confirm("Are you sure, you want to delete this?")) {
+    setTaskList(taskList.filter((item) => item.id !== id));
+  }
+};
+
+
   return (
     <>
      <div className="wrapper pt-5">
@@ -47,7 +54,7 @@ taskList.map((item) => {
       <div className="container">
         <h1 className="text-center">Not To Do List</h1>
       <Form addTaskList={addTaskList}/>
-      <Table taskList={taskList} switchTask={switchTask}/>  
+      <Table taskList={taskList} switchTask={switchTask} handleOnDelete={handleOnDelete}/>  
         <div className="alert alert-success">
           The total hours allocated = <span id="ttlHrs">0</span> hrs
         </div>

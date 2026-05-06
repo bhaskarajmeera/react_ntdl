@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Table = ({taskList,switchTask}) => {
+export const Table = ({taskList,switchTask, handleOnDelete}) => {
 
 const entryList = taskList.filter((item) => item.type === "entry");
 const badList = taskList.filter((item) => item.type === "bad");
@@ -18,7 +18,7 @@ const badList = taskList.filter((item) => item.type === "bad");
 <td>{item.task}</td>
 <td>{item.hr}hr</td>
 <td className="text-end">
-  <button onClick="handleOnDelete('${item.id}')" className="btn btn-danger">
+  <button onClick={()=>handleOnDelete(item.id)} className="btn btn-danger">
     <i className="fa-solid fa-trash"></i>
   </button>
   <button onClick={()=>switchTask(item.id, 'bad')} className="btn btn-success">
@@ -45,7 +45,7 @@ const badList = taskList.filter((item) => item.type === "bad");
   <button onClick={()=>switchTask(item.id, 'entry')} className="btn btn-warning">
     <i className="fa-solid fa-arrow-left"></i>
   </button>
-  <button onClick="handleOnDelete('{item.id}')" classN="btn btn-danger">
+  <button onClick={()=>handleOnDelete(item.id)} classN="btn btn-danger">
   <i className="fa-solid fa-trash"></i>
 </button>
 </td>
