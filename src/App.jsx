@@ -32,6 +32,13 @@ const addTaskList = (taskObj )=> {
   }
   return id;
 };
+const switchTask = (id, type) => {
+setTaskList(
+taskList.map((item) => {
+    if (item.id === id) {item.type = type;}
+    return item;
+  }));
+};
 
   return (
     <>
@@ -39,11 +46,8 @@ const addTaskList = (taskObj )=> {
      
       <div className="container">
         <h1 className="text-center">Not To Do List</h1>
-
       <Form addTaskList={addTaskList}/>
-
-      <Table taskList={taskList}/>  
-
+      <Table taskList={taskList} switchTask={switchTask}/>  
         <div className="alert alert-success">
           The total hours allocated = <span id="ttlHrs">0</span> hrs
         </div>
